@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+	<title>Game tangkap aku</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f0f0f0;
+			margin: 0;
+			padding: 0;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+			overflow: hidden;
+		}
+		
+		#gameArea {
+			position: relative;
+			width: 90%;
+			height: 80vh;
+			background-color: white;
+			border: 2px solid #0078d4;
+		}
+		
+		#tangkapAku {
+			position: absolute;
+			padding: 10px 20px;
+			background-color: #ff6347;
+			color: white;
+			border: none;
+			border-radius: 10px;
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+
+<div id="gameArea">
+	<button id="tangkapAku">Tangkap Aku!</button>
+</div>
+
+<script>
+	const button =
+document.getElementById('tangkapAku');
+	const gameArea =
+document.getElementById('gameArea');
+
+	function getRandomPosition() {
+		const maxX = gameArea.clientWidth - button.clientWidth;
+		const maxY = gameArea.clientHeight - button.clientHeight;
+		const randomX = Math.floor(Math.random()*maxX);
+		const randomY = Math.floor(Math.random()*maxY);
+		return { x: randomX, y: randomY };
+	}
+	
+	button.addEventListener('mouseover', () => {
+		const newPosition = getRandomPosition();
+		button.style.left = `${newPosition.x}px`;
+		button.style.top = `${newPosition.y}px`;
+	});
+	
+	button.style.left = '50%';
+	button.style.top = '50%';
+	button.style.transform = 'translate(-50%,-50%)';
+	
+	button.addEventListener('click',() => {
+		alert('Kamu berhasil menangkap aku! 🤩');
+		});
+	</script>
+	
+	</body>
+	</html>
